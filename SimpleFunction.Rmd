@@ -1,0 +1,9 @@
+---
+title: "SimpleFunction"
+author: "Muthu Palanisamy"
+date: "1/30/2018"
+output: html_document
+---
+
+```{r Function Building, echo=TRUE, code=readLines('~/desktop/R-Work/Unit3Q3.R')}
+````
