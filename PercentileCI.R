@@ -11,3 +11,7 @@ for (i in 1:1000){
 }
 quantile(bootnorm,c(0.025,0.975))
 quantile(bootvar,c(0.025,0.975))
+library(boot)
+mymean<-function(d,i) mean(d[i])
+myboot<-boot(x,mymean, R=1000)
+boot.ci(myboot, type=c("perc","bca"))
