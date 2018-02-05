@@ -1,0 +1,9 @@
+---
+title: "MuthuPalani_Livesession4assignment"
+author: "Muthu Palanisamy"
+date: "2/1/2018"
+output: html_document
+---
+
+```{r FiveThirtyEight Data, echo=TRUE, code=readLines('Unit04-Q1.R')}
+```
