@@ -1,13 +1,17 @@
 
 Unit 05 MSDS - Doing Data Science - Code Book: Feb 10, 2018 - Muthu Palani
 
-Summary: Client is expecting a baby, wants to choose a popular name from 2015 & 2016 baby names in the United States. Client aware that the baby is a girl, he wants us to provide the top 10 name and the amount of children's given that name.
+Summary: Client is expecting a baby, wants to choose a popular name from 2015 & 2016 baby names in the United States. 
+Client aware that the baby is a girl, he wants us to provide the top 10 name and the amount of children's given that name.
 
 Unit05.R - R script which has Data Munging, Data Merging & Data Summary logic.
 
-yob2016.txt - Text file contains the popular names of babies of 2016 in the United States. It's a semicolon ";" separated file, consists of 3 column - Name, Sex and the amount of children given that name.
+yob2016.txt - Text file contains the popular names of babies of 2016 in the United States. 
+It's a semicolon ";" separated file, consists of 3 column - Name, Sex and the amount of children given that name.
 
-yob2015.txt - Text file contains the popular names of babies of 2015 in the United States. Same as 2016 however it's a comma "," separated file, consists of 3 column - Name, Sex and the amount of children given that name. 
+yob2015.txt - Text file contains the popular names of babies of 2015 in the United States. 
+Same as 2016 however it's a comma "," separated file, consists of 3 column - Name, Sex 
+and the amount of children given that name. 
 
 MuthuPalani_Livesession5assignment.Rmd - R Markdown file which executes the R script and generates HTML file.
 
