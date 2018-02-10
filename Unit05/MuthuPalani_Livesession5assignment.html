@@ -199,37 +199,42 @@ tail(y2015,10)</code></pre>
 ## 33061  Zykir   M     5
 ## 33062  Zyrus   M     5
 ## 33063   Zyus   M     5</code></pre>
-<pre class="r"><code># Merge 2015 &amp; 2016
+<pre class="r"><code># Observation: 
+# All the names were given to boys (bottom 10)
+# with 5 childrens given same name
+
+# Merge 2015 &amp; 2016
 mergedData&lt;-merge(y2015, y2016, by = &quot;Name&quot;, all = TRUE)
 mergedData$Count.x[is.na((mergedData$Count.x))]&lt;-0
 mergedData$Count.y[is.na((mergedData$Count.y))]&lt;-0
 
-head(mergedData)                </code></pre>
-<pre><code>##        Name Sex.x Count.x Sex.y Count.y
-## 1     Aaban     M      15     M       9
-## 2     Aabha     F       7     F       7
-## 3     Aabid  &lt;NA&gt;       0     M       5
-## 4     Aabir  &lt;NA&gt;       0     M       5
-## 5 Aabriella     F       5     F      11
-## 6      Aada     F       5  &lt;NA&gt;       0</code></pre>
-<pre class="r"><code># Data Summary
-
+# Data Summary
+# Sumup the total count.
 mergedData$Total&lt;-mergedData$Count.x + mergedData$Count.y
 
+# Take the subset of girchild names
 final&lt;-subset(mergedData, Sex.x==&quot;F&quot; &amp; Sex.y == &quot;F&quot;)
 final&lt;-final[order(final$Total, decreasing = TRUE),]
-head(final,10)</code></pre>
-<pre><code>##            Name Sex.x Count.x Sex.y Count.y Total
-## 13218      Emma     F   20415     F   19414 39829
-## 32127    Olivia     F   19638     F   19246 38884
-## 37796    Sophia     F   17381     F   16070 33451
-## 5096        Ava     F   16340     F   16237 32577
-## 17090  Isabella     F   15574     F   14722 30296
-## 29450       Mia     F   14871     F   14366 29237
-## 8743  Charlotte     F   11381     F   13030 24411
-## 446     Abigail     F   12371     F   11699 24070
-## 13188     Emily     F   11766     F   10926 22692
-## 15943    Harper     F   10283     F   10733 21016</code></pre>
+
+# Store the first 10 names in csv
+finalcsv&lt;-final[1:10, c(1,6)]
+finalcsv</code></pre>
+<pre><code>##            Name Total
+## 13218      Emma 39829
+## 32127    Olivia 38884
+## 37796    Sophia 33451
+## 5096        Ava 32577
+## 17090  Isabella 30296
+## 29450       Mia 29237
+## 8743  Charlotte 24411
+## 446     Abigail 24070
+## 13188     Emily 22692
+## 15943    Harper 21016</code></pre>
+<pre class="r"><code>write.csv(finalcsv, file=&quot;itsagirl.csv&quot;)</code></pre>
+<div id="code-book-for-this-project." class="section level5">
+<h5>Code book for this project.</h5>
+<p><a href="https://github.com/pmsn23/MSDS-6306/blob/master/Unit05/Unit05CodeBook.txt" class="uri">https://github.com/pmsn23/MSDS-6306/blob/master/Unit05/Unit05CodeBook.txt</a></p>
+</div>
 <div id="assignment-link-to-github" class="section level5">
 <h5>Assignment link to github</h5>
 <p><a href="https://github.com/pmsn23/MSDS-6306/tree/master/Unit05" class="uri">https://github.com/pmsn23/MSDS-6306/tree/master/Unit05</a></p>

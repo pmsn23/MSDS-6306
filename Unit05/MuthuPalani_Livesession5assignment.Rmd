@@ -7,5 +7,9 @@ output: html_document
 
 ```{r Top10 Female Child Name, echo=TRUE, code=readLines('Unit05.R')}
 ```
+##### Code book for this project.
+https://github.com/pmsn23/MSDS-6306/blob/master/Unit05/Unit05CodeBook.txt
+
 ##### Assignment link to github 
 https://github.com/pmsn23/MSDS-6306/tree/master/Unit05
+
