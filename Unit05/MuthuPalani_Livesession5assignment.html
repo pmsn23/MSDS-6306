@@ -133,15 +133,15 @@ $(document).ready(function () {
 df&lt;-read.delim('yob2016.txt', sep=&quot;;&quot; , header=FALSE)
 
 # Set the names of the columns
-names(df)&lt;-c(&quot;Name&quot;,&quot;Sex&quot;,&quot;Count&quot;)
+names(df)&lt;-c(&quot;Name&quot;,&quot;Gender&quot;,&quot;Count&quot;)
 
-# Convert the fields Name &amp; Sex to character (from factor)
+# Convert the fields Name &amp; Gender to character (from factor)
 df$Name&lt;-as.character(df$Name)
-df$Sex&lt;-as.character(df$Sex)
+df$Gender&lt;-as.character(df$Gender)
 
 # Summary &amp; Structure of the data frame
 summary(df)</code></pre>
-<pre><code>##      Name               Sex                Count        
+<pre><code>##      Name              Gender              Count        
 ##  Length:32869       Length:32869       Min.   :    5.0  
 ##  Class :character   Class :character   1st Qu.:    7.0  
 ##  Mode  :character   Mode  :character   Median :   12.0  
@@ -150,9 +150,9 @@ summary(df)</code></pre>
 ##                                        Max.   :19414.0</code></pre>
 <pre class="r"><code>str(df)</code></pre>
 <pre><code>## 'data.frame':    32869 obs. of  3 variables:
-##  $ Name : chr  &quot;Emma&quot; &quot;Olivia&quot; &quot;Ava&quot; &quot;Sophia&quot; ...
-##  $ Sex  : chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
-##  $ Count: int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ...</code></pre>
+##  $ Name  : chr  &quot;Emma&quot; &quot;Olivia&quot; &quot;Ava&quot; &quot;Sophia&quot; ...
+##  $ Gender: chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
+##  $ Count : int  19414 19246 16237 16070 14722 14366 13030 11699 10926 10733 ...</code></pre>
 <pre class="r"><code># Delete the misspelled Name
 MisspelledName = grep(&quot;yyy$&quot;,df$Name,value=&quot;TRUE&quot;)
 MisspelledName</code></pre>
@@ -166,15 +166,15 @@ y2016&lt;-df[(-1 * which(df$Name == grep(&quot;yyy$&quot;,df$Name,value=&quot;TR
 y2015&lt;-read.delim(&quot;yob2015.txt&quot;,sep=',',header=FALSE)
 
 # Set the names of the columns
-names(y2015)&lt;-c(&quot;Name&quot;,&quot;Sex&quot;,&quot;Count&quot;)
+names(y2015)&lt;-c(&quot;Name&quot;,&quot;Gender&quot;,&quot;Count&quot;)
 
-# Convert the fields Name &amp; Sex to character (from factor)
+# Convert the fields Name &amp; Gender to character (from factor)
 y2015$Name&lt;-as.character(y2015$Name)
-y2015$Sex&lt;-as.character(y2015$Sex)
+y2015$Gender&lt;-as.character(y2015$Gender)
 
 # Summary &amp; Structure of the data frame
 summary(y2015)</code></pre>
-<pre><code>##      Name               Sex                Count        
+<pre><code>##      Name              Gender              Count        
 ##  Length:33063       Length:33063       Min.   :    5.0  
 ##  Class :character   Class :character   1st Qu.:    7.0  
 ##  Mode  :character   Mode  :character   Median :   11.0  
@@ -183,53 +183,53 @@ summary(y2015)</code></pre>
 ##                                        Max.   :20415.0</code></pre>
 <pre class="r"><code>str(y2015)</code></pre>
 <pre><code>## 'data.frame':    33063 obs. of  3 variables:
-##  $ Name : chr  &quot;Emma&quot; &quot;Olivia&quot; &quot;Sophia&quot; &quot;Ava&quot; ...
-##  $ Sex  : chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
-##  $ Count: int  20415 19638 17381 16340 15574 14871 12371 11766 11381 10283 ...</code></pre>
+##  $ Name  : chr  &quot;Emma&quot; &quot;Olivia&quot; &quot;Sophia&quot; &quot;Ava&quot; ...
+##  $ Gender: chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
+##  $ Count : int  20415 19638 17381 16340 15574 14871 12371 11766 11381 10283 ...</code></pre>
 <pre class="r"><code># Display last 10 row.
 tail(y2015,10)</code></pre>
-<pre><code>##         Name Sex Count
-## 33054   Ziyu   M     5
-## 33055   Zoel   M     5
-## 33056  Zohar   M     5
-## 33057 Zolton   M     5
-## 33058   Zyah   M     5
-## 33059 Zykell   M     5
-## 33060 Zyking   M     5
-## 33061  Zykir   M     5
-## 33062  Zyrus   M     5
-## 33063   Zyus   M     5</code></pre>
+<pre><code>##         Name Gender Count
+## 33054   Ziyu      M     5
+## 33055   Zoel      M     5
+## 33056  Zohar      M     5
+## 33057 Zolton      M     5
+## 33058   Zyah      M     5
+## 33059 Zykell      M     5
+## 33060 Zyking      M     5
+## 33061  Zykir      M     5
+## 33062  Zyrus      M     5
+## 33063   Zyus      M     5</code></pre>
 <pre class="r"><code># Observation: 
 # All the names were given to boys (bottom 10)
-# with 5 childrens given same name
+# &amp; 5 childrens given same name
 
 # Merge 2015 &amp; 2016
-mergedData&lt;-merge(y2015, y2016, by = &quot;Name&quot;, all = TRUE)
+mergedData&lt;-merge(y2015, y2016, c(&quot;Name&quot;,&quot;Gender&quot;), all = TRUE)
 mergedData$Count.x[is.na((mergedData$Count.x))]&lt;-0
 mergedData$Count.y[is.na((mergedData$Count.y))]&lt;-0
 
 # Data Summary
-# Sumup the total count.
+# Sum up the total count.
 mergedData$Total&lt;-mergedData$Count.x + mergedData$Count.y
 
 # Take the subset of girchild names
-final&lt;-subset(mergedData, Sex.x==&quot;F&quot; &amp; Sex.y == &quot;F&quot;)
+final&lt;-subset(mergedData, Gender == &quot;F&quot;)
 final&lt;-final[order(final$Total, decreasing = TRUE),]
 
 # Store the first 10 names in csv
-finalcsv&lt;-final[1:10, c(1,6)]
+finalcsv&lt;-final[1:10, c(1,5)]
 finalcsv</code></pre>
 <pre><code>##            Name Total
-## 13218      Emma 39829
-## 32127    Olivia 38884
-## 37796    Sophia 33451
-## 5096        Ava 32577
-## 17090  Isabella 30296
-## 29450       Mia 29237
-## 8743  Charlotte 24411
-## 446     Abigail 24070
-## 13188     Emily 22692
-## 15943    Harper 21016</code></pre>
+## 12027      Emma 39829
+## 29240    Olivia 38884
+## 34320    Sophia 33451
+## 4759        Ava 32577
+## 15521  Isabella 30296
+## 26751       Mia 29237
+## 7961  Charlotte 24411
+## 428     Abigail 24070
+## 12001     Emily 22692
+## 14502    Harper 21016</code></pre>
 <pre class="r"><code>write.csv(finalcsv, file=&quot;itsagirl.csv&quot;)</code></pre>
 <div id="code-book-for-this-project." class="section level5">
 <h5>Code book for this project.</h5>
