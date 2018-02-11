@@ -17,6 +17,6 @@ MuthuPalani_Livesession5assignment.Rmd - R Markdown file which executes the R sc
 
 MuthuPalani_Livesession5assignment.html - Output generated from R Markdown file
 
-itsagirl.csv - Final out for the client with top 10 girl child name and the total count (combined 2015 & 2016)
+itsagirl.csv - Final output for the client with top 10 girl child name and the total count (combined 2015 & 2016)
 
 
